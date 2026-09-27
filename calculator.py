@@ -33,7 +33,8 @@ def main():
                 print("Invalid input. Please enter numbers.")
                 continue
 
-            print("Result:", add(first, second))
+            result = add(first, second)
+            print(f"Result: {first:g} + {second:g} = {result:g}")
         else:
             print("This operation is not implemented yet.")
 
