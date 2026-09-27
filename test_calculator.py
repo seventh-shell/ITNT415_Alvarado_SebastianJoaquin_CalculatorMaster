@@ -1,6 +1,6 @@
 import unittest
 
-from calculator import multiply, subtract
+from calculator import divide, multiply, subtract
 
 
 class TestSubtraction(unittest.TestCase):
@@ -29,6 +29,24 @@ class TestMultiplication(unittest.TestCase):
 
     def test_decimal_numbers(self):
         self.assertAlmostEqual(multiply(1.5, 2.2), 3.3)
+
+
+class TestDivision(unittest.TestCase):
+    def test_exact_result(self):
+        self.assertEqual(divide(8, 2), 4)
+
+    def test_fractional_result(self):
+        self.assertAlmostEqual(divide(7, 2), 3.5)
+
+    def test_negative_number(self):
+        self.assertEqual(divide(-8, 2), -4)
+
+    def test_zero_numerator(self):
+        self.assertEqual(divide(0, 5), 0)
+
+    def test_zero_denominator(self):
+        with self.assertRaises(ZeroDivisionError):
+            divide(5, 0)
 
 
 if __name__ == "__main__":
