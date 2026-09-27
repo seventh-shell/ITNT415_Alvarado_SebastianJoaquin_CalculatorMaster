@@ -14,6 +14,12 @@ def multiply(a, b):
     return a * b
 
 
+def divide(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return a / b
+
+
 def main():
     while True:
         print("\nCalculator")
@@ -33,25 +39,31 @@ def main():
             print("Invalid option. Please choose 1-5.")
             continue
 
-        if choice in ("1", "2", "3"):
-            try:
-                first = float(input("Enter first number: "))
-                second = float(input("Enter second number: "))
-            except ValueError:
-                print("Invalid input. Please enter numbers.")
-                continue
+        try:
+            first = float(input("Enter first number: "))
+            second = float(input("Enter second number: "))
+        except ValueError:
+            print("Invalid input. Please enter numbers.")
+            continue
 
+        try:
             if choice == "1":
                 result = add(first, second)
-                print(f"Result: {first:g} + {second:g} = {result:g}")
+                operator = "+"
             elif choice == "2":
                 result = subtract(first, second)
-                print(f"Result: {first:g} - {second:g} = {result:g}")
-            else:
+                operator = "-"
+            elif choice == "3":
                 result = multiply(first, second)
-                print(f"Result: {first:g} * {second:g} = {result:g}")
-        else:
-            print("This operation is not implemented yet.")
+                operator = "*"
+            else:
+                result = divide(first, second)
+                operator = "/"
+        except ZeroDivisionError as error:
+            print(error)
+            continue
+
+        print(f"Result: {first:g} {operator} {second:g} = {result:g}")
 
 
 if __name__ == "__main__":
