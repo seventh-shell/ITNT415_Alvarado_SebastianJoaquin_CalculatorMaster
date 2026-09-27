@@ -6,6 +6,10 @@ def add(a, b):
     return a + b
 
 
+def subtract(a, b):
+    return a - b
+
+
 def main():
     while True:
         print("\nCalculator")
@@ -25,7 +29,7 @@ def main():
             print("Invalid option. Please choose 1-5.")
             continue
 
-        if choice == "1":
+        if choice in ("1", "2"):
             try:
                 first = float(input("Enter first number: "))
                 second = float(input("Enter second number: "))
@@ -33,8 +37,12 @@ def main():
                 print("Invalid input. Please enter numbers.")
                 continue
 
-            result = add(first, second)
-            print(f"Result: {first:g} + {second:g} = {result:g}")
+            if choice == "1":
+                result = add(first, second)
+                print(f"Result: {first:g} + {second:g} = {result:g}")
+            else:
+                result = subtract(first, second)
+                print(f"Result: {first:g} - {second:g} = {result:g}")
         else:
             print("This operation is not implemented yet.")
 
