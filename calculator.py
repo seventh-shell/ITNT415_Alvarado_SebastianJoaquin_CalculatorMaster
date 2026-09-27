@@ -1,6 +1,11 @@
 # Author: Alvarado Sebastian Joaquin S.
 # ITNT415 Midterm Calculator
 
+
+def add(a, b):
+    return a + b
+
+
 def main():
     while True:
         print("\nCalculator")
@@ -20,7 +25,18 @@ def main():
             print("Invalid option. Please choose 1-5.")
             continue
 
-        print("This operation is not implemented yet.")
+        if choice == "1":
+            try:
+                first = float(input("Enter first number: "))
+                second = float(input("Enter second number: "))
+            except ValueError:
+                print("Invalid input. Please enter numbers.")
+                continue
+
+            result = add(first, second)
+            print(f"Result: {first:g} + {second:g} = {result:g}")
+        else:
+            print("This operation is not implemented yet.")
 
 
 if __name__ == "__main__":
